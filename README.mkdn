@@ -1,9 +1,11 @@
-KnightWalker 4.19.x Kernel Source
+TheOneMemory 4.19.x Kernel Source
+====================================
+Based from `KnightWalker`
 ====================================
 
 Getting Started
 ---------------
-You can use this source if u Want or Download Builded Kernel / Release build from this https://telegra.ph/Projekt-Walker-419-Kernel-Download-Links-09-25 ,
+You can use this source if u Want or Download Builded Kernel / Release build from this https://www.pling.com/p/2041260 ,
 
 Clone with `--recursive` option coz this source has submodule.
 
@@ -17,12 +19,12 @@ This Kernel is using Stock Freq. If u want Overclocked Freq, Do this:
 To Overclock CPU:
 
 - Add `overclock.cpu=1` into boot cmdline. Or
-- Hardcode, set this to 1 https://github.com/RyuujiX/android_kernel_asus_sdm660-4.19/blob/test/drivers/clk/qcom/clk-cpu-osm-660.c#L263
+- Hardcode, set this to 1 https://github.com/Tiktodz/android_kernel_asus_sdm660/blob/test/drivers/clk/qcom/clk-cpu-osm-660.c#L263
 
 To Overclock GPU:
 
 - Add `overclock.gpu=1` into boot cmdline. Or
-- Hardcode, set this to 1 https://github.com/RyuujiX/android_kernel_asus_sdm660-4.19/blob/test/drivers/gpu/msm/adreno.c#L31
+- Hardcode, set this to 1 https://github.com/Tiktodz/android_kernel_asus_sdm660/blob/test/drivers/gpu/msm/adreno.c#L31
 
 KernelSU
 --------
@@ -36,7 +38,7 @@ If u only want to enable Safe Mode (U should enable KernelSU too), Which u just 
 - Add `kernelsu.safemode=1` into boot cmdline. Or
 - Set `CONFIG_KSU_SAFE_MODE=y` in defconfig.
 
-Source: https://github.com/RyuujiX/KernelSU
+Source: https://github.com/Tiktodz/KernelSU
 
 
 Using New Novatek Touchscreen Driver
@@ -48,7 +50,7 @@ Working smoothly on mine with new driver.
 If u want to use new driver, do this:
 
 - Add `use_new_nvtouch=1` into boot cmdline. Or
-- Hardcode, set this to 1 https://github.com/RyuujiX/android_kernel_asus_sdm660-4.19/blob/test/init/main.c#L147
+- Hardcode, set this to 1 https://github.com/Tiktodz/android_kernel_asus_sdm660/blob/test/init/main.c#L147
 - Or, Disable Original NVT Driver in defconfig. `CONFIG_TOUCHSCREEN_NT36xxx_ASUS` is New NVT Driver.
 
 Spectrum Support
@@ -60,7 +62,3 @@ Name: 4.19-xxxxxxxxx
 Note: 4.19-xxxx-oc is for Overclocked Both CPU and GPU.
 
 Or , make it by ur self .
-
-My CI Builder Script
---------------------
-Check it out: https://github.com/RyuujiX/builder-xobod-r
