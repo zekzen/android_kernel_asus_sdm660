@@ -40,12 +40,12 @@ else
 	TIMESTAMP=$KBUILD_BUILD_TIMESTAMP
 fi
 if test -z "$KBUILD_BUILD_USER"; then
-	LINUX_COMPILE_BY=$(whoami | sed 's/\\/\\\\/')
+	LINUX_COMPILE_BY="dotkit"
 else
 	LINUX_COMPILE_BY=$KBUILD_BUILD_USER
 fi
 if test -z "$KBUILD_BUILD_HOST"; then
-	LINUX_COMPILE_HOST=`hostname`
+	LINUX_COMPILE_HOST="electro-wizard"
 else
 	LINUX_COMPILE_HOST=$KBUILD_BUILD_HOST
 fi
@@ -73,10 +73,7 @@ UTS_TRUNCATE="cut -b -$UTS_LEN"
   echo \#define LINUX_COMPILE_BY \"`echo $LINUX_COMPILE_BY | $UTS_TRUNCATE`\"
   echo \#define LINUX_COMPILE_HOST \"`echo $LINUX_COMPILE_HOST | $UTS_TRUNCATE`\"
 
-  CC_VERSION=$($CC -v 2>&1 | grep ' version ' | sed 's/[[:space:]]*$//')
-  LD_VERSION=$($LD -v | head -n1 | sed 's/(compatible with [^)]*)//' \
-		      | sed 's/[[:space:]]*$//')
-  printf '#define LINUX_COMPILER "%s"\n' "$CC_VERSION, $LD_VERSION"
+  echo \#define LINUX_COMPILER \"`$CC -v 2>&1 | grep ' version ' | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//'`\"
 ) > .tmpcompile
 
 # Only replace the real compile.h if the new one is different,
